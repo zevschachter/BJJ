@@ -295,15 +295,32 @@ p {
   margin-bottom: 0;
 }
 
-.teaching-photo {
-  display: block;
-  margin-top: 40px;
+.grid-why {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 64px;
+  align-items: center;
 }
 
-.teaching-photo img {
+.why-copy h2 {
+  max-width: 18ch;
+}
+
+.why-copy p:last-child {
+  margin-bottom: 0;
+}
+
+.teaching {
   width: 100%;
   height: auto;
   border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .grid-why {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }
 
 /* —— Steps —— */
@@ -371,7 +388,7 @@ p {
 
 /* —— Contact —— */
 .section-contact {
-  padding: 128px 0;
+  padding: 112px 0 104px;
 }
 
 .contact-title {
@@ -397,13 +414,14 @@ p {
   background: var(--ink);
   color: var(--muted-dark);
   text-align: center;
-  padding: 0 6vw 2.5rem;
+  padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
 }
 
 .site-footer p {
   margin: 0 auto;
   font-size: 13px;
-  max-width: 60ch;
+  line-height: 1.6;
+  max-width: 62ch;
 }
 
 /* —— Reveals (progressive enhancement) —— */
@@ -460,10 +478,6 @@ p {
 
   body.has-sticky-cta {
     padding-bottom: calc(72px + env(safe-area-inset-bottom));
-  }
-
-  .section-contact {
-    padding: clamp(4.5rem, 12vw, 6rem) 0;
   }
 }
 

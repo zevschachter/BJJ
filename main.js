@@ -11,6 +11,7 @@
   const track = document.querySelector(".hero-track");
   const stickyCta = document.getElementById("stickyCta");
   const contact = document.getElementById("contact");
+  const footer = document.getElementById("footer");
 
   function splitLine(el) {
     if (!el) return [];
@@ -111,6 +112,12 @@
     if (!stickyCta || !track || !contact) return;
     const mq = window.matchMedia("(max-width: 767px)");
 
+    function inView(el) {
+      if (!el) return false;
+      const r = el.getBoundingClientRect();
+      return r.top < window.innerHeight && r.bottom > 0;
+    }
+
     function sync() {
       if (!mq.matches) {
         stickyCta.hidden = true;
@@ -120,10 +127,9 @@
       }
 
       const pastHero = track.getBoundingClientRect().bottom <= 0;
-      const cRect = contact.getBoundingClientRect();
-      const contactInView = cRect.top < window.innerHeight && cRect.bottom > 0;
+      const hideForBottom = inView(contact) || inView(footer);
 
-      if (pastHero && !contactInView) {
+      if (pastHero && !hideForBottom) {
         stickyCta.hidden = false;
         document.body.classList.add("has-sticky-cta");
         requestAnimationFrame(() => stickyCta.classList.add("on"));
