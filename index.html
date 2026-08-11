@@ -1,157 +1,185 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zev Schachter BJJ — Brazilian Jiu Jitsu for Yeshivot in Israel</title>
-  <meta name="description" content="Brazilian Jiu Jitsu programs for English-speaking yeshivot in Israel. I bring the mats — you bring the room. Run by a competitor training with the Israeli national team." />
-  <link rel="canonical" href="https://zev.life/" />
-  <meta property="og:url" content="https://zev.life/" />
-  <meta property="og:title" content="Zev Schachter BJJ — Brazilian Jiu Jitsu for Yeshivot in Israel" />
-  <meta property="og:description" content="Brazilian Jiu Jitsu programs for English-speaking yeshivot in Israel. I bring the mats — you bring the room. Run by a competitor training with the Israeli national team." />
-  <meta property="og:image" content="https://zev.life/img/og-image.jpg" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Brazilian Jiu Jitsu programs for English-speaking yeshivot in Israel. I bring the mats — you bring the room. Run by a competitor training with the Israeli national team.">
+  <link rel="canonical" href="https://zev.life/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zev.life/">
+  <meta property="og:title" content="Zev Schachter BJJ — Brazilian Jiu Jitsu for Yeshivot in Israel">
+  <meta property="og:description" content="Brazilian Jiu Jitsu programs for English-speaking yeshivot in Israel. I bring the mats — you bring the room. Run by a competitor training with the Israeli national team.">
+  <meta property="og:image" content="https://zev.life/img/og-image.jpg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-
-<main>
-
-  <!-- 1. HERO -->
-  <section class="hero-track" id="hero">
-    <div class="hero-sticky">
-      <picture>
-        <source srcset="img/hero.webp" type="image/webp" />
-        <img class="hero-img" src="img/hero.jpg" width="1600" height="909"
-             alt="Zev Schachter smiling while applying an armlock during jiu jitsu training." />
-      </picture>
-      <div class="hero-scrim" aria-hidden="true"></div>
-      <div class="hero-text">
-        <p class="eyebrow eyebrow-dark">Zev Schachter · Brazilian Jiu Jitsu</p>
-        <h1 class="tagline">
-          <span class="tagline-line" id="tag1">I bring the mats.</span>
-          <span class="tagline-line" id="tag2">You bring the room.</span>
-        </h1>
-        <p class="hero-sub">BJJ programs for English-speaking yeshivot in Israel.</p>
-        <a class="btn btn-primary hero-cta" id="heroCta" href="#contact">Set up a trial class</a>
-      </div>
-      <div class="scroll-hint" id="scrollHint" aria-hidden="true">
-        <span class="scroll-hint-line"></span>
-        <span class="scroll-hint-label">Scroll</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. WHO I AM -->
-  <section class="section section-light" id="about">
-    <div class="wrap grid-2">
-      <div class="portrait-slot reveal">
-        <!-- TODO: replace with <picture> img/portrait.webp when supplied -->
-        <div class="portrait-placeholder" role="img" aria-label="Portrait photo coming soon">
-          <span>Portrait</span>
+  <main>
+    <section class="hero-track" id="hero" aria-label="Hero">
+      <div class="hero-sticky">
+        <picture>
+          <source type="image/webp" srcset="/img/hero.webp">
+          <img
+            class="hero-media"
+            src="/img/hero.jpg"
+            alt="Zev Schachter smiling while applying an armlock during jiu jitsu training."
+            width="1600"
+            height="909"
+            fetchpriority="high"
+          >
+        </picture>
+        <div class="hero-scrim" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Zev Schachter · Brazilian Jiu Jitsu</p>
+          <h1 class="tagline">
+            <span class="tagline-line" id="tag1">I bring the mats.</span>
+            <span class="tagline-line" id="tag2">You bring the room.</span>
+          </h1>
+          <p class="hero-sub">BJJ programs for English-speaking yeshivot in Israel.</p>
+          <a class="btn btn-primary hero-cta" id="heroCta" href="#contact">Set up a trial class</a>
+        </div>
+        <div class="scroll-hint" id="scrollHint" aria-hidden="true">
+          <span class="scroll-hint-line"></span>
+          <span class="scroll-hint-label">Scroll</span>
         </div>
       </div>
-      <div class="reveal">
-        <p class="eyebrow">Who I Am</p>
-        <h2>A few years ahead of your bochurim, on the same derech.</h2>
-        <p>I learned in yeshiva in Eretz Yisroel, and spent a year as a dorm counselor at Waterbury Mesivta — where between giving a chabura on Pirkei Avos, I trained at Nova União under Professor Danilo Sherman. I know what the year in Israel is. I know what dorm energy on a motzei Shabbos looks like.</p>
-        <p>I've trained martial arts since I was 14 — Krav Maga, MMA, and Brazilian Jiu Jitsu at 10th Planet, ATOS Jerusalem, and Nova União Waterbury. Today I train with ATOS Jerusalem and the Israeli national team.</p>
-        <p>I'm not an outside vendor. I'm a ben Torah who happens to compete at the highest level — and I built this program for the olam I came from.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3. WHY BJJ IN A YESHIVA -->
-  <section class="section section-dark" id="why">
-    <div class="wrap wrap-narrow reveal">
-      <p class="eyebrow">Why It Works</p>
-      <h2>Mussar on the mat.</h2>
-      <p>Bochurim carry real energy and real stress. Jiu Jitsu channels both into discipline, humility, and physical confidence — in a structured, supervised setting inside your own walls. You tap, you learn, you get back up. No co-ed gym. No outside environment. No travel.</p>
-      <p>And for your program, it's something to tell parents: a weekly BJJ class run by a competitor training with the Israeli national team. That goes in your marketing materials, not just your schedule.</p>
-    </div>
-  </section>
-
-  <!-- 4. HOW IT WORKS -->
-  <section class="section section-light" id="how">
-    <div class="wrap">
-      <p class="eyebrow reveal">How It Works</p>
-      <h2 class="reveal">You give me a room. That's it.</h2>
-      <div class="steps">
-        <div class="step reveal">
-          <span class="step-num">1</span>
-          <h3>The room</h3>
-          <p>Any open hall, dining room after seder, or basement works.</p>
+    <section class="section section-light" id="about">
+      <div class="wrap who-grid">
+        <div class="portrait-slot reveal">
+          <picture>
+            <source type="image/webp" srcset="/img/portrait.webp">
+            <img
+              src="/img/portrait.jpg"
+              alt="Zev Schachter"
+              width="1000"
+              height="1250"
+              loading="lazy"
+            >
+          </picture>
         </div>
-        <div class="step reveal">
-          <span class="step-num">2</span>
-          <h3>The mats</h3>
-          <p>I bring professional mats and all equipment. You buy nothing.</p>
-        </div>
-        <div class="step reveal">
-          <span class="step-num">3</span>
-          <h3>The schedule</h3>
-          <p>Built around your seder: night seder alternative, Friday morning, or bein hazmanim.</p>
-        </div>
-        <div class="step reveal">
-          <span class="step-num">4</span>
-          <h3>The class</h3>
-          <p>Gi or no-gi, beginner-friendly, every fitness level. Structured, technique-first.</p>
+        <div class="who-copy reveal">
+          <p class="eyebrow eyebrow-light">Who I Am</p>
+          <h2>A few years ahead of your bochurim, on the same derech.</h2>
+          <p>I learned in yeshiva in Eretz Yisroel, and spent a year as a dorm counselor at Waterbury Mesivta, where between giving a chabura on Pirkei Avos I trained at Nova União. I know what the year in Israel is. I know what dorm energy on a Motzei Shabbos looks like.</p>
+          <p>I've trained martial arts since I was 14 — Krav Maga, Muay Thai, MMA, and Brazilian Jiu Jitsu. Today I train with ATOS Jerusalem and the Israeli national team.</p>
+          <p>I'm not an outside vendor. I'm a ben Torah who happens to compete at the highest level. I built this program for the guy I was — the one who needed this outlet and didn't have it.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 5. CREDENTIALS -->
-  <section class="section section-dark section-creds" id="background">
-    <div class="wrap reveal">
-      <p class="eyebrow">Background</p>
-      <ul class="creds">
-        <li>10+ years martial arts</li>
-        <li>Krav Maga &amp; MMA</li>
-        <li>ATOS Jerusalem</li>
-        <li>Nova União Waterbury</li>
-        <li>Israeli national team training</li>
-      </ul>
-      <p class="creds-note">Trained under Professor Danilo Sherman, Nova União.</p>
-    </div>
-  </section>
-
-  <!-- 6. SAFETY -->
-  <section class="section section-light" id="safety">
-    <div class="wrap wrap-narrow reveal">
-      <p class="eyebrow">Safety</p>
-      <h2>Structured. Supervised. Injury-conscious.</h2>
-      <p>Every class opens with a full warm-up and runs technique-first. Beginners drill controlled positions long before anything live, and all sparring is supervised and matched by size and experience.</p>
-      <!-- TODO: add one sentence on insurance/liability coverage before launch. Do not invent coverage claims. -->
-    </div>
-  </section>
-
-  <!-- 7. CONTACT -->
-  <section class="section section-dark section-contact" id="contact">
-    <div class="wrap wrap-narrow reveal">
-      <h2 class="contact-headline">Let's set up a trial class.</h2>
-      <p class="contact-sub">One class. Your bochurim will tell you the rest.</p>
-      <div class="contact-actions">
-        <!-- TODO: replace REPLACE_WITH_NUMBER with WhatsApp number in international format, no + or dashes (e.g. 972501234567) -->
-        <a class="btn btn-primary" href="https://wa.me/REPLACE_WITH_NUMBER">WhatsApp me</a>
-        <!-- TODO: replace with real email address -->
-        <a class="btn btn-outline" href="mailto:REPLACE_WITH_EMAIL">Email</a>
+    <section class="section section-dark" id="why">
+      <div class="wrap wrap-narrow reveal">
+        <p class="eyebrow">Why It Works</p>
+        <h2>Mussar on the mat.</h2>
+        <p>Bochurim carry real energy and real stress. Jiu Jitsu channels both into discipline, humility, and physical confidence — in a structured, supervised setting inside your own walls. You tap, you learn, you get back up. No co-ed gym. No outside environment. No travel.</p>
+        <p>And for your program, it's something to tell parents: a weekly BJJ class run by a competitor training with the Israeli national team. That goes in your marketing materials, not just your schedule.</p>
+        <picture class="teaching-photo">
+          <source type="image/webp" srcset="/img/teaching.webp">
+          <img
+            src="/img/teaching.jpg"
+            alt="Zev Schachter demonstrating an armbar on the mats at ATOS Jerusalem."
+            width="1600"
+            height="2133"
+            loading="lazy"
+          >
+        </picture>
       </div>
-    </div>
-  </section>
+    </section>
 
-</main>
+    <section class="section section-light" id="how">
+      <div class="wrap">
+        <p class="eyebrow eyebrow-light reveal">How It Works</p>
+        <h2 class="reveal">You give me a room. That's it.</h2>
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">1</span>
+            <h3>The room</h3>
+            <p>Any open hall, dining room after seder, or basement works.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3>The mats</h3>
+            <p>I bring professional mats and all equipment. You buy nothing.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3>The schedule</h3>
+            <p>Built around your seder: night seder alternative, Friday morning, or bein hazmanim.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step-num" aria-hidden="true">4</span>
+            <h3>The class</h3>
+            <p>Gi or no-gi, beginner-friendly, every fitness level. Structured, technique-first.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-<footer class="footer">
-  <p>Zev Schachter · Jerusalem · Serving English-speaking yeshivot across Israel · © <span id="year">2026</span></p>
-</footer>
+    <section class="section section-dark" id="trained">
+      <div class="wrap">
+        <p class="eyebrow reveal">Where I've Trained</p>
+        <ul class="gyms">
+          <li class="reveal">
+            <span class="gym-name">Krav Maga Worldwide</span>
+            <span class="gym-note">Los Angeles. Where it started, age 14.</span>
+          </li>
+          <li class="reveal">
+            <span class="gym-name">10th Planet Burbank</span>
+            <span class="gym-note">Los Angeles. First taste of jiu jitsu.</span>
+          </li>
+          <li class="reveal">
+            <span class="gym-name">ATOS Jerusalem</span>
+            <span class="gym-note">Gi and no-gi, during my year in yeshiva.</span>
+          </li>
+          <li class="reveal">
+            <span class="gym-name">Subconscious BJJ</span>
+            <span class="gym-note">Los Angeles. Still my home gym when I'm back.</span>
+          </li>
+          <li class="reveal">
+            <span class="gym-name">Jitsu Academy, Nova União</span>
+            <span class="gym-note">Waterbury, under Professor Danilo Sherman. Where my Spider Guard came from.</span>
+          </li>
+          <li class="reveal">
+            <span class="gym-name">ATOS Jerusalem &amp; the Israeli National Team</span>
+            <span class="gym-note">Where I train today.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-<a class="sticky-cta" id="stickyCta" href="#contact">Set up a trial class</a>
+    <section class="section section-light" id="safety">
+      <div class="wrap wrap-narrow-left reveal">
+        <p class="eyebrow eyebrow-light">Safety</p>
+        <h2>Structured. Supervised. Injury-conscious.</h2>
+        <p>Every class opens with a full warm-up and runs technique-first. Beginners drill controlled positions long before anything live, and all sparring is supervised and matched by size and experience.</p>
+        <!-- TODO: add one sentence on insurance/liability coverage before launch. Do not invent coverage claims. -->
+      </div>
+    </section>
 
-<script src="main.js"></script>
+    <section class="section section-dark section-contact" id="contact">
+      <div class="wrap wrap-center reveal">
+        <h2 class="contact-title">Let's set up a trial class.</h2>
+        <p class="contact-sub">One class. Your bochurim will tell you the rest.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://wa.me/972535346480">WhatsApp me</a>
+          <a class="btn btn-outline" href="mailto:zevschachter@gmail.com">Email</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Zev Schachter · Jerusalem · Serving English-speaking yeshivot across Israel · © <span data-year></span></p>
+  </footer>
+
+  <a class="sticky-cta" id="stickyCta" href="#contact" hidden>Set up a trial class</a>
+
+  <script src="/main.js" defer></script>
 </body>
 </html>

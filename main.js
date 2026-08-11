@@ -4,137 +4,151 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  const tagline = document.querySelector("[data-scrub-tagline]");
-  const heroCta = document.querySelector(".hero-cta");
-  const scrollHint = document.querySelector(".scroll-hint");
+  const tag1 = document.getElementById("tag1");
+  const tag2 = document.getElementById("tag2");
+  const heroCta = document.getElementById("heroCta");
+  const scrollHint = document.getElementById("scrollHint");
   const track = document.querySelector(".hero-track");
-  const mobileCta = document.querySelector(".mobile-cta");
-  const contact = document.querySelector("#contact");
+  const stickyCta = document.getElementById("stickyCta");
+  const contact = document.getElementById("contact");
 
-  function wrapWords(el) {
+  function splitLine(el) {
     if (!el) return [];
-    const lines = Array.from(el.querySelectorAll(".hero-line"));
-    const words = [];
-    lines.forEach((line) => {
-      const parts = line.textContent.trim().split(/\s+/);
-      line.textContent = "";
-      parts.forEach((part, idx) => {
-        const span = document.createElement("span");
-        span.className = "word";
-        span.textContent = part;
-        line.appendChild(span);
-        words.push(span);
-        if (idx < parts.length - 1) line.appendChild(document.createTextNode(" "));
-      });
+    const parts = el.textContent.trim().split(/\s+/);
+    el.textContent = "";
+    return parts.map((part) => {
+      const span = document.createElement("span");
+      span.className = "w";
+      span.textContent = part;
+      el.appendChild(span);
+      return span;
     });
-    return words;
   }
 
-  const words = wrapWords(tagline);
+  const words = [...splitLine(tag1), ...splitLine(tag2)];
 
+  // Reduced motion: leave CSS defaults (everything visible). Do not add js-scrub.
   if (reduceMotion) {
-    words.forEach((w) => w.classList.add("is-on"));
-    if (heroCta) heroCta.classList.add("is-visible");
-    if (scrollHint) scrollHint.classList.add("is-hidden");
-  } else if (track && words.length) {
-    let ticking = false;
-
-    function updateScrub() {
-      ticking = false;
-      const rect = track.getBoundingClientRect();
-      const total = track.offsetHeight - window.innerHeight;
-      const p = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 1;
-      const n = words.length;
-
-      words.forEach((word, i) => {
-        const threshold = 0.04 + i * (0.55 / n);
-        word.classList.toggle("is-on", p > threshold);
-      });
-
-      if (heroCta) heroCta.classList.toggle("is-visible", p > 0.8);
-      if (scrollHint) scrollHint.classList.toggle("is-hidden", p > 0.05);
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(updateScrub);
-      }
-    }
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    updateScrub();
+    setupReveals(false);
+    setupStickyCta();
+    return;
   }
 
-  // Steps reveal
-  const steps = document.querySelectorAll("[data-reveal]");
-  if (steps.length) {
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      steps.forEach((el) => el.classList.add("is-in"));
-    } else {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target;
-            const siblings = Array.from(el.parentElement.children);
-            const idx = siblings.indexOf(el);
-            el.style.transitionDelay = `${idx * 60}ms`;
-            el.classList.add("is-in");
-            io.unobserve(el);
-          });
-        },
-        { threshold: 0.2, rootMargin: "0px 0px -8% 0px" }
-      );
-      steps.forEach((el) => io.observe(el));
+  document.body.classList.add("js-scrub");
+
+  let ticking = false;
+
+  function clamp(n, min, max) {
+    return Math.min(max, Math.max(min, n));
+  }
+
+  function updateScrub() {
+    ticking = false;
+    if (!track || !words.length) return;
+
+    const trackRect = track.getBoundingClientRect();
+    const trackHeight = track.offsetHeight;
+    const denom = trackHeight - window.innerHeight;
+    const p = denom > 0 ? clamp(-trackRect.top / denom, 0, 1) : 1;
+    const n = words.length;
+    const span = 0.42 / n;
+
+    words.forEach((word, i) => {
+      const local = clamp((p - (0.03 + i * span)) / span, 0, 1);
+      word.style.opacity = String(0.12 + 0.88 * local);
+      word.style.transform = `translateY(${12 * (1 - local)}px)`;
+    });
+
+    if (heroCta) heroCta.classList.toggle("on", p > 0.62);
+    if (scrollHint) scrollHint.classList.toggle("off", p > 0.05);
+  }
+
+  function onScrollOrResize() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateScrub);
     }
   }
 
-  // Sticky mobile CTA
-  if (mobileCta && track && contact) {
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize, { passive: true });
+  window.addEventListener("orientationchange", onScrollOrResize, { passive: true });
+  updateScrub();
+
+  setupReveals(true);
+  setupStickyCta();
+
+  function setupReveals(animate) {
+    const items = document.querySelectorAll(".reveal");
+    if (!items.length) return;
+
+    if (!animate || !("IntersectionObserver" in window)) {
+      items.forEach((el) => el.classList.add("in"));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const siblings = Array.from(el.parentElement?.children || []).filter((n) =>
+            n.classList?.contains("reveal")
+          );
+          const idx = Math.max(0, siblings.indexOf(el));
+          el.style.transitionDelay = `${idx * 60}ms`;
+          el.classList.add("in");
+          io.unobserve(el);
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    items.forEach((el) => io.observe(el));
+  }
+
+  function setupStickyCta() {
+    if (!stickyCta || !track || !contact) return;
     const mq = window.matchMedia("(max-width: 767px)");
 
-    function syncMobileCta() {
+    function sync() {
       if (!mq.matches) {
-        mobileCta.hidden = true;
-        mobileCta.classList.remove("is-shown");
+        stickyCta.hidden = true;
+        stickyCta.classList.remove("on");
+        document.body.classList.remove("has-sticky-cta");
         return;
       }
 
       const pastHero = track.getBoundingClientRect().bottom <= 0;
-      const contactRect = contact.getBoundingClientRect();
-      const contactInView =
-        contactRect.top < window.innerHeight && contactRect.bottom > 0;
+      const cRect = contact.getBoundingClientRect();
+      const contactInView = cRect.top < window.innerHeight && cRect.bottom > 0;
 
       if (pastHero && !contactInView) {
-        mobileCta.hidden = false;
-        document.body.classList.add("has-mobile-cta");
-        requestAnimationFrame(() => mobileCta.classList.add("is-shown"));
+        stickyCta.hidden = false;
+        document.body.classList.add("has-sticky-cta");
+        requestAnimationFrame(() => stickyCta.classList.add("on"));
       } else {
-        mobileCta.classList.remove("is-shown");
-        document.body.classList.remove("has-mobile-cta");
-        if (!pastHero || contactInView) {
-          window.setTimeout(() => {
-            if (!mobileCta.classList.contains("is-shown")) mobileCta.hidden = true;
-          }, 260);
-        }
+        stickyCta.classList.remove("on");
+        document.body.classList.remove("has-sticky-cta");
+        window.setTimeout(() => {
+          if (!stickyCta.classList.contains("on")) stickyCta.hidden = true;
+        }, 260);
       }
     }
 
-    let mobileTick = false;
-    function onMobileScroll() {
-      if (mobileTick) return;
-      mobileTick = true;
+    let stickyTick = false;
+    function onMove() {
+      if (stickyTick) return;
+      stickyTick = true;
       requestAnimationFrame(() => {
-        mobileTick = false;
-        syncMobileCta();
+        stickyTick = false;
+        sync();
       });
     }
 
-    window.addEventListener("scroll", onMobileScroll, { passive: true });
-    window.addEventListener("resize", onMobileScroll, { passive: true });
-    mq.addEventListener?.("change", syncMobileCta);
-    syncMobileCta();
+    window.addEventListener("scroll", onMove, { passive: true });
+    window.addEventListener("resize", onMove, { passive: true });
+    mq.addEventListener?.("change", sync);
+    sync();
   }
 })();
