@@ -401,6 +401,19 @@ p {
   color: var(--muted-dark);
 }
 
+.coaches {
+  margin-top: 28px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted-dark);
+}
+
+.coaches-label {
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  color: var(--cream);
+}
+
 /* —— Contact —— */
 .section-contact {
   padding: 112px 0 104px;
