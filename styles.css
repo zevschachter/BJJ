@@ -302,6 +302,14 @@ p {
   margin-bottom: 0;
 }
 
+.signature {
+  font-family: "Archivo", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--accent-deep);
+  margin-top: 20px;
+}
+
 .grid-why {
   display: grid;
   grid-template-columns: 3fr 2fr;

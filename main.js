@@ -57,7 +57,7 @@
       if (window.innerWidth < 768) {
         var panP = Math.min(1, p / 0.75);
         var eased = panP * panP * (3 - 2 * panP); // smoothstep
-        heroImg.style.objectPosition = (8 + eased * 92).toFixed(2) + "% 50%";
+        heroImg.style.objectPosition = (8 + eased * 47).toFixed(2) + "% 50%";
       } else {
         heroImg.style.objectPosition = "";
       }
