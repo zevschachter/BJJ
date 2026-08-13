@@ -167,13 +167,20 @@ p {
   color: var(--cream);
 }
 
-.hero-media {
+.hero-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: 40% 50%;
+  will-change: object-position;
+}
+
+@media (max-width: 768px) {
+  .hero-img {
+    object-position: 8% 50%;
+  }
 }
 
 .hero-scrim {

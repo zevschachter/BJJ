@@ -9,6 +9,7 @@
   const heroCta = document.getElementById("heroCta");
   const scrollHint = document.getElementById("scrollHint");
   const track = document.querySelector(".hero-track");
+  const heroImg = document.querySelector(".hero-img");
   const stickyCta = document.getElementById("stickyCta");
   const contact = document.getElementById("contact");
   const footer = document.getElementById("footer");
@@ -51,6 +52,17 @@
     const trackHeight = track.offsetHeight;
     const denom = trackHeight - window.innerHeight;
     const p = denom > 0 ? clamp(-trackRect.top / denom, 0, 1) : 1;
+
+    if (heroImg) {
+      if (window.innerWidth < 768) {
+        var panP = Math.min(1, p / 0.75);
+        var eased = panP * panP * (3 - 2 * panP); // smoothstep
+        heroImg.style.objectPosition = (8 + eased * 84).toFixed(2) + "% 50%";
+      } else {
+        heroImg.style.objectPosition = "";
+      }
+    }
+
     const n = words.length;
     const span = 0.42 / n;
 
