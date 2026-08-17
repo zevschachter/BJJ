@@ -328,6 +328,9 @@ p {
 .teaching {
   width: 100%;
   height: auto;
+  max-height: min(32rem, 70vh);
+  object-fit: cover;
+  object-position: 50% 18%;
   border-radius: 8px;
 }
 
