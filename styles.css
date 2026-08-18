@@ -302,6 +302,10 @@ p {
   margin-bottom: 0;
 }
 
+.who-copy p:has(+ .signature) {
+  margin-bottom: 0;
+}
+
 .signature {
   font-family: "Archivo", sans-serif;
   font-weight: 500;
