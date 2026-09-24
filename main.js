@@ -1,7 +1,4 @@
 (() => {
-  const yearEl = document.querySelector("[data-year]");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
-
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const tag1 = document.getElementById("tag1");
