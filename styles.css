@@ -216,6 +216,8 @@ p {
   display: block;
 }
 
+#tag1::after { content: "."; }
+
 .tagline .w {
   display: inline-block;
   margin-right: 0.22em;

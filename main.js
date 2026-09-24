@@ -18,6 +18,7 @@
     return parts.map((part) => {
       const span = document.createElement("span");
       span.className = "w";
+      span.dir = "auto";
       span.textContent = part;
       el.appendChild(span);
       return span;
