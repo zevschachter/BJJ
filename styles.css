@@ -292,15 +292,19 @@ p {
 .ydl-body p { max-width: none; }
 
 .ydl-logo {
-  position: relative;
   float: left;
-  width: 300px;
-  margin: 4px 40px 28px 0;
-  padding: 12px;
-  border-radius: 14px;
-  background: #0A0A0A;
-  overflow: hidden;
-  isolation: isolate;
+  width: 320px;
+  margin: 2px 44px 26px 0;
+  animation: ydl-glow 5s ease-in-out infinite;
+}
+.ydl-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+@keyframes ydl-glow {
+  0%, 100% { filter: drop-shadow(0 0 14px rgba(239, 108, 26, 0.20)); }
+  50%      { filter: drop-shadow(0 0 26px rgba(239, 108, 26, 0.42)); }
 }
 
 .ydl-clear { clear: left; padding-top: 4px; }
@@ -317,39 +321,6 @@ p {
 }
 .cite-note a { color: var(--muted-dark); text-decoration: underline; text-decoration-color: rgba(239, 159, 39, 0.5); text-underline-offset: 3px; }
 .cite-note a:hover { color: var(--cream); text-decoration-color: var(--accent); }
-.ydl-logo::before {
-  content: "";
-  position: absolute;
-  inset: -60%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    transparent 200deg,
-    rgba(239, 108, 26, 0.55) 260deg,
-    #EF9F27 300deg,
-    rgba(239, 108, 26, 0.55) 340deg,
-    transparent 360deg
-  );
-  animation: ydl-sweep 7s linear infinite;
-  z-index: -2;
-}
-.ydl-logo::after {
-  content: "";
-  position: absolute;
-  inset: 1.5px;
-  border-radius: 13px;
-  background: #0A0A0A;
-  z-index: -1;
-}
-.ydl-logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  position: relative;
-}
-@keyframes ydl-sweep {
-  to { transform: rotate(360deg); }
-}
 
 /* —— Who —— */
 .who-grid {
@@ -647,5 +618,5 @@ p {
     transition: none;
   }
 
-  .ydl-logo::before { animation: none; background: rgba(239, 108, 26, 0.5); }
+  .ydl-logo { animation: none; filter: drop-shadow(0 0 16px rgba(239, 108, 26, 0.28)); }
 }
