@@ -285,6 +285,64 @@ p {
   color: color-mix(in srgb, var(--cream) 70%, transparent);
 }
 
+/* —— YDL —— */
+.section-ydl { border-bottom: 1px solid rgba(239, 159, 39, 0.18); }
+.section-ydl h2 { color: var(--accent); }
+.grid-ydl {
+  display: grid;
+  grid-template-columns: 1fr 2.2fr;
+  gap: 56px;
+  align-items: start;
+}
+.cite-note {
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted-dark);
+}
+
+.ydl-logo {
+  position: relative;
+  padding: 16px;
+  border-radius: 14px;
+  background: #0A0A0A;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ydl-logo::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 200deg,
+    rgba(239, 108, 26, 0.55) 260deg,
+    #EF9F27 300deg,
+    rgba(239, 108, 26, 0.55) 340deg,
+    transparent 360deg
+  );
+  animation: ydl-sweep 7s linear infinite;
+  z-index: -2;
+}
+.ydl-logo::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  border-radius: 13px;
+  background: #0A0A0A;
+  z-index: -1;
+}
+.ydl-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+@keyframes ydl-sweep {
+  to { transform: rotate(360deg); }
+}
+
 /* —— Who —— */
 .who-grid {
   display: grid;
@@ -343,6 +401,9 @@ p {
     grid-template-columns: 1fr;
     gap: 40px;
   }
+
+  .grid-ydl { grid-template-columns: 1fr; gap: 32px; }
+  .ydl-logo { max-width: 200px; }
 }
 
 /* —— Steps —— */
@@ -573,4 +634,6 @@ p {
   .sticky-cta {
     transition: none;
   }
+
+  .ydl-logo::before { animation: none; background: rgba(239, 108, 26, 0.5); }
 }
