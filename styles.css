@@ -290,7 +290,7 @@ p {
 /* —— YDL —— */
 .section-ydl { border-bottom: 1px solid rgba(239, 159, 39, 0.18); }
 .section-ydl { border-top: 3px solid var(--accent); }
-.ydl-brand {
+.section-ydl .ydl-brand {
   font-family: "Archivo", sans-serif;
   font-weight: 700;
   font-size: 26px;
