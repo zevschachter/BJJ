@@ -290,26 +290,24 @@ p {
 /* —— YDL —— */
 .section-ydl { border-bottom: 1px solid rgba(239, 159, 39, 0.18); }
 .ydl-body { max-width: 1000px; }
-.ydl-body::after { content: ""; display: table; clear: both; }
 .ydl-body p { max-width: none; }
 
+.ydl-intro {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  margin-bottom: 1.6em;
+}
+.ydl-intro p { margin: 0; }
 .ydl-logo {
-  float: left;
-  width: 250px;
-  margin: 6px 40px 20px 0;
+  flex: 0 0 260px;
   animation: ydl-glow 5s ease-in-out infinite;
 }
-.ydl-logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+.ydl-logo img { display: block; width: 100%; height: auto; }
 @keyframes ydl-glow {
   0%, 100% { filter: drop-shadow(0 0 14px rgba(239, 108, 26, 0.20)); }
   50%      { filter: drop-shadow(0 0 26px rgba(239, 108, 26, 0.42)); }
 }
-
-.ydl-clear { clear: left; padding-top: 4px; }
 
 .section-ydl .eyebrow { margin-top: 0; }
 .section-ydl h2 { color: var(--accent); margin-bottom: 20px; max-width: none; }
@@ -378,7 +376,8 @@ p {
 }
 
 @media (max-width: 900px) {
-  .ydl-logo { width: 210px; margin-right: 30px; }
+  .ydl-logo { flex-basis: 210px; }
+  .ydl-intro { gap: 32px; }
 }
 
 @media (max-width: 768px) {
@@ -387,8 +386,8 @@ p {
     gap: 40px;
   }
 
-  .ydl-logo { float: none; width: 200px; margin: 0 0 28px 0; }
-  .ydl-clear { clear: none; }
+  .ydl-intro { flex-direction: column; align-items: flex-start; gap: 28px; }
+  .ydl-logo { flex-basis: auto; width: 200px; }
 }
 
 /* —— Steps —— */
