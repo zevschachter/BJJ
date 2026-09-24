@@ -315,6 +315,8 @@ p {
   line-height: 1.5;
   color: var(--muted-dark);
 }
+.cite-note a { color: var(--muted-dark); text-decoration: underline; text-decoration-color: rgba(239, 159, 39, 0.5); text-underline-offset: 3px; }
+.cite-note a:hover { color: var(--cream); text-decoration-color: var(--accent); }
 .ydl-logo::before {
   content: "";
   position: absolute;
