@@ -300,17 +300,13 @@ p {
   margin-bottom: 10px;
 }
 .ydl-body { max-width: 1000px; }
+.ydl-body::after { content: ""; display: table; clear: both; }
 .ydl-body p { max-width: none; }
 
-.ydl-intro {
-  display: flex;
-  align-items: center;
-  gap: 44px;
-  margin-bottom: 1.6em;
-}
-.ydl-intro p { margin: 0; }
 .ydl-logo {
-  flex: 0 0 260px;
+  float: left;
+  width: 250px;
+  margin: 6px 36px 22px 0;
   animation: ydl-glow 5s ease-in-out infinite;
 }
 .ydl-logo img { display: block; width: 100%; height: auto; }
@@ -386,8 +382,7 @@ p {
 }
 
 @media (max-width: 900px) {
-  .ydl-logo { flex-basis: 210px; }
-  .ydl-intro { gap: 32px; }
+  .ydl-logo { width: 210px; margin-right: 28px; }
 }
 
 @media (max-width: 768px) {
@@ -396,8 +391,7 @@ p {
     gap: 40px;
   }
 
-  .ydl-intro { flex-direction: column; align-items: flex-start; gap: 28px; }
-  .ydl-logo { flex-basis: auto; width: 200px; }
+  .ydl-logo { float: none; width: 200px; margin: 0 0 28px 0; }
   .ydl-brand { font-size: 21px; }
 }
 
