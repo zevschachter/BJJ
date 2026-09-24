@@ -293,8 +293,8 @@ p {
 
 .ydl-logo {
   float: left;
-  width: 320px;
-  margin: 2px 44px 26px 0;
+  width: 250px;
+  margin: 6px 40px 20px 0;
   animation: ydl-glow 5s ease-in-out infinite;
 }
 .ydl-logo img {
@@ -376,7 +376,7 @@ p {
 }
 
 @media (max-width: 900px) {
-  .ydl-logo { width: 220px; margin-right: 28px; }
+  .ydl-logo { width: 210px; margin-right: 30px; }
 }
 
 @media (max-width: 768px) {
