@@ -310,7 +310,7 @@ p {
 .ydl-clear { clear: left; padding-top: 4px; }
 
 .section-ydl .eyebrow { margin-top: 0; }
-.section-ydl h2 { color: var(--accent); margin-bottom: 20px; }
+.section-ydl h2 { color: var(--accent); margin-bottom: 20px; max-width: none; }
 .cite-note {
   margin-top: 28px;
   padding-top: 16px;
