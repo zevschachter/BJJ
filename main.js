@@ -26,6 +26,10 @@
   }
 
   const words = [...splitLine(tag1), ...splitLine(tag2)];
+  words.forEach((word, i) => {
+    const step = words.length > 1 ? 150 / (words.length - 1) : 0;
+    word.style.animationDelay = `${Math.round(i * step)}ms`;
+  });
 
   // Reduced motion: leave CSS defaults (everything visible). Do not add js-scrub.
   if (reduceMotion) {
@@ -60,15 +64,6 @@
         heroImg.style.objectPosition = "";
       }
     }
-
-    const n = words.length;
-    const span = 0.42 / n;
-
-    words.forEach((word, i) => {
-      const local = clamp((p - (0.03 + i * span)) / span, 0, 1);
-      word.style.opacity = String(0.12 + 0.88 * local);
-      word.style.transform = `translateY(${12 * (1 - local)}px)`;
-    });
 
     if (heroCta) heroCta.classList.toggle("on", p > 0.62);
     if (scrollHint) scrollHint.classList.toggle("off", p > 0.05);

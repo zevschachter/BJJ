@@ -69,6 +69,11 @@ h3 {
   margin: 0 0 1rem;
 }
 
+h1,
+h2 {
+  text-wrap: balance;
+}
+
 h2 {
   font-size: clamp(28px, 4vw, 40px);
   max-width: 22ch;
@@ -76,7 +81,7 @@ h2 {
 
 p {
   margin: 0 0 1.1em;
-  max-width: 62ch;
+  max-width: 65ch;
   font-size: clamp(16px, 1.2vw, 18px);
 }
 
@@ -222,12 +227,16 @@ p {
   display: inline-block;
   margin-right: 0.22em;
   opacity: 1;
-  will-change: opacity, transform;
+  transform: none;
 }
 
 .js-scrub .tagline .w {
-  opacity: 0.12;
-  transform: translateY(12px);
+  animation: tagline-rise 450ms ease both;
+}
+
+@keyframes tagline-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
 }
 
 .hero-sub {
@@ -290,33 +299,28 @@ p {
 /* —— YDL —— */
 .section-ydl { border-bottom: 1px solid rgba(239, 159, 39, 0.18); }
 .section-ydl { border-top: 3px solid var(--accent); }
-.section-ydl .ydl-brand {
-  font-family: "Archivo", sans-serif;
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--accent);
-  margin-bottom: 10px;
+
+.ydl-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  column-gap: 48px;
+  align-items: center;
 }
-.ydl-body { max-width: 1000px; }
-.ydl-body::after { content: ""; display: table; clear: both; }
-.ydl-body p { max-width: none; }
 
 .ydl-logo {
-  float: left;
-  width: 250px;
-  margin: 6px 36px 22px 0;
   animation: ydl-glow 5s ease-in-out infinite;
 }
 .ydl-logo img { display: block; width: 100%; height: auto; }
+
+.ydl-copy { max-width: 60ch; }
+.ydl-copy p:last-child { margin-bottom: 0; }
 @keyframes ydl-glow {
   0%, 100% { filter: drop-shadow(0 0 14px rgba(239, 108, 26, 0.20)); }
   50%      { filter: drop-shadow(0 0 26px rgba(239, 108, 26, 0.42)); }
 }
 
 .section-ydl .eyebrow { margin-top: 0; }
-.section-ydl h2 { color: var(--cream); margin-bottom: 20px; max-width: none; }
+.section-ydl h2 { color: var(--cream); max-width: none; margin-bottom: 32px; }
 .cite-note {
   margin-top: 28px;
   padding-top: 16px;
@@ -381,22 +385,23 @@ p {
   border-radius: 8px;
 }
 
-@media (max-width: 900px) {
-  .ydl-logo { width: 210px; margin-right: 28px; }
-}
-
 @media (max-width: 768px) {
   .grid-why {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-
-  .ydl-logo { float: none; width: 200px; margin: 0 0 28px 0; }
-  .ydl-brand { font-size: 21px; }
 }
 
-/* —— How —— */
-#how .wrap > p:not(.eyebrow) {
+@media (max-width: 767px) {
+  .ydl-row { display: block; }
+  .ydl-logo {
+    max-width: 160px;
+    margin: 0 auto 24px;
+  }
+}
+
+/* —— Safety —— */
+#safety p {
   max-width: 60ch;
 }
 
@@ -469,38 +474,21 @@ p {
   justify-content: center;
 }
 
+#ydl sup { font-size: inherit; line-height: 0; }
 .footnote-ref {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
   color: var(--accent);
-  font-size: 0.72em;
   text-decoration: none;
-  margin-left: 1px;
-}
-
-.references {
-  background: var(--ink);
-  color: var(--muted-dark);
-  padding: 24px 0;
-}
-.references p {
-  width: min(1120px, calc(100% - 2 * 6vw));
-  margin: 0 auto;
-  max-width: none;
-  font-size: 13px;
-  line-height: 1.5;
-  color: inherit;
-}
-.references a {
-  color: inherit;
-}
-.footnote-num {
-  color: var(--accent);
-  margin-right: 0.35em;
+  padding: 0 2px;
 }
 
 .site-footer {
   background: var(--ink);
   color: var(--muted-dark);
   text-align: center;
+  border-top: 1px solid rgba(154, 160, 168, 0.15);
   padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
 }
 
@@ -509,6 +497,14 @@ p {
   font-size: 13px;
   line-height: 1.6;
   max-width: 62ch;
+}
+
+.site-footer .footer-ref {
+  font-size: 12px;
+  color: var(--muted-dark);
+  text-align: center;
+  max-width: 60ch;
+  margin: 0 auto 12px;
 }
 
 /* —— Reveals (progressive enhancement) —— */
@@ -600,6 +596,7 @@ p {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+    animation: none !important;
     pointer-events: auto !important;
   }
 
