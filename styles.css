@@ -395,35 +395,9 @@ p {
   .ydl-brand { font-size: 21px; }
 }
 
-/* —— Steps —— */
-.steps {
-  list-style: none;
-  margin: 2.5rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 1.75rem;
-}
-
-.step-num {
-  display: block;
-  font-family: Archivo, system-ui, sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--accent);
-  margin-bottom: 0.65rem;
-}
-
-.step h3 {
-  font-size: 20px;
-  margin-bottom: 0.4rem;
-}
-
-.step p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 16px;
+/* —— How —— */
+#how .wrap > p:not(.eyebrow) {
+  max-width: 60ch;
 }
 
 /* —— Gyms —— */
@@ -567,10 +541,6 @@ p {
 }
 
 @media (max-width: 600px) {
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
   .contact-actions {
     flex-direction: column;
   }
@@ -580,21 +550,10 @@ p {
   }
 }
 
-@media (min-width: 601px) and (max-width: 900px) {
-  .steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2rem 1.75rem;
-  }
-}
-
 @media (min-width: 901px) {
   .who-grid {
     grid-template-columns: 2fr 3fr;
     gap: 64px;
-  }
-
-  .steps {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
 
