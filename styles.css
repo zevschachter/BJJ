@@ -436,9 +436,113 @@ p {
   }
 }
 
+/* —— Term strip —— */
+.term-strip {
+  background: var(--accent);
+  color: var(--ink);
+  padding: 18px 0;
+  overflow: hidden;
+}
+
+.term-track {
+  display: flex;
+  width: max-content;
+  animation: term-scroll 40s linear infinite;
+}
+
+.term-list {
+  display: flex;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex: none;
+}
+
+.term-list li {
+  flex: none;
+  font-family: Archivo, Heebo, system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(15px, 1.4vw, 20px);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  padding: 0 28px;
+}
+
+.term-list li[lang="he"] {
+  text-transform: none;
+}
+
+.term-list li::after {
+  content: "•";
+  margin-left: 28px;
+  opacity: 0.5;
+}
+
+@keyframes term-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (hover: hover) and (min-width: 768px) {
+  .term-strip:hover .term-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 767px) {
+  .term-strip { padding: 14px 0; }
+}
+
 /* —— Safety —— */
 #safety p {
   max-width: 60ch;
+}
+
+/* —— FAQ —— */
+.faq-list details + details {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+.faq-list summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 0;
+  font-family: Archivo, Heebo, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 1.35;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-list summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-list summary::marker {
+  content: "";
+}
+
+.faq-list summary::after {
+  content: "+";
+  flex: none;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.faq-list details[open] summary::after {
+  content: "–";
+}
+
+.faq-list details p {
+  max-width: 60ch;
+  margin: 0 0 1.15rem;
 }
 
 /* —— Gyms —— */
@@ -636,4 +740,24 @@ p {
   }
 
   .ydl-logo { animation: none; filter: drop-shadow(0 0 16px rgba(239, 108, 26, 0.28)); }
+
+  .term-track {
+    animation: none;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .term-list[aria-hidden="true"] {
+    display: none;
+  }
+
+  .term-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
 }
