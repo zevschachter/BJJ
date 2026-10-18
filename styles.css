@@ -19,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Inter, Heebo, system-ui, sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.65;
@@ -47,7 +47,7 @@ a:focus-visible,
 
 .eyebrow {
   margin: 0 0 1rem;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Inter, Heebo, system-ui, sans-serif;
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.15em;
@@ -62,7 +62,7 @@ a:focus-visible,
 h1,
 h2,
 h3 {
-  font-family: Archivo, system-ui, sans-serif;
+  font-family: Archivo, Heebo, system-ui, sans-serif;
   font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -135,7 +135,7 @@ p {
   min-height: 48px;
   padding: 0.85rem 1.35rem;
   border-radius: 8px;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: Inter, Heebo, system-ui, sans-serif;
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
@@ -300,8 +300,9 @@ p {
 
 .ydl-row {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  column-gap: 48px;
+  grid-template-columns: clamp(200px, 18vw, 280px) minmax(0, 60ch);
+  justify-content: start;
+  column-gap: clamp(32px, 4vw, 64px);
   align-items: center;
 }
 
@@ -320,7 +321,7 @@ p {
   margin: 40px 0 0;
   padding-top: 16px;
   border-top: 1px solid color-mix(in srgb, var(--muted-dark) 12%, transparent);
-  max-width: 60ch;
+  max-width: calc(60ch * 16 / 12);
 }
 #ydl .ydl-ref a {
   color: var(--muted-dark);
@@ -330,12 +331,24 @@ p {
 #ydl .ydl-ref a:hover { color: var(--accent); }
 #ydl .ydl-ref sup {
   color: var(--accent);
-  font-size: calc(0.7 * clamp(16px, 1.2vw, 18px));
+  font-size: calc(0.65 * clamp(16px, 1.2vw, 18px));
   line-height: 0;
   vertical-align: super;
 }
+#ydl .ydl-copy sup {
+  font-size: 0.65em;
+  line-height: 0;
+  vertical-align: 0.5em;
+  margin-left: 1px;
+}
+#ydl .ydl-copy sup .footnote-ref {
+  font-size: inherit;
+  line-height: 0;
+  vertical-align: baseline;
+  padding: 0 2px 0 0;
+}
 @media (min-width: 768px) {
-  #ydl .ydl-ref { margin-left: calc(220px + 48px); }
+  #ydl .ydl-ref { margin-left: calc(clamp(200px, 18vw, 280px) + clamp(32px, 4vw, 64px)); }
 }
 @keyframes ydl-glow {
   0%, 100% { filter: drop-shadow(0 0 14px rgba(239, 108, 26, 0.20)); }
@@ -377,7 +390,7 @@ p {
 }
 
 .signature {
-  font-family: "Archivo", sans-serif;
+  font-family: "Archivo", Heebo, sans-serif;
   font-weight: 500;
   font-size: 20px;
   color: var(--accent-deep);
@@ -446,7 +459,7 @@ p {
 
 .gym-name {
   display: block;
-  font-family: Archivo, system-ui, sans-serif;
+  font-family: Archivo, Heebo, system-ui, sans-serif;
   font-size: 20px;
   font-weight: 500;
   color: var(--cream);
@@ -468,7 +481,7 @@ p {
 }
 
 .coaches-label {
-  font-family: "Archivo", sans-serif;
+  font-family: "Archivo", Heebo, sans-serif;
   font-weight: 500;
   color: var(--cream);
 }
@@ -556,7 +569,7 @@ p {
     border-radius: 8px;
     background: var(--accent);
     color: var(--ink);
-    font-family: Inter, system-ui, sans-serif;
+    font-family: Inter, Heebo, system-ui, sans-serif;
     font-size: 16px;
     font-weight: 500;
     text-decoration: none;
