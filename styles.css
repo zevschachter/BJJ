@@ -469,6 +469,34 @@ p {
   justify-content: center;
 }
 
+.footnote-ref {
+  color: var(--accent);
+  font-size: 0.72em;
+  text-decoration: none;
+  margin-left: 1px;
+}
+
+.references {
+  background: var(--ink);
+  color: var(--muted-dark);
+  padding: 24px 0;
+}
+.references p {
+  width: min(1120px, calc(100% - 2 * 6vw));
+  margin: 0 auto;
+  max-width: none;
+  font-size: 13px;
+  line-height: 1.5;
+  color: inherit;
+}
+.references a {
+  color: inherit;
+}
+.footnote-num {
+  color: var(--accent);
+  margin-right: 0.35em;
+}
+
 .site-footer {
   background: var(--ink);
   color: var(--muted-dark);
