@@ -229,12 +229,11 @@ p {
 }
 
 .js-scrub .tagline .w {
-  animation: tagline-rise 450ms ease both;
+  opacity: 0.3;
 }
 
-@keyframes tagline-rise {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: none; }
+.js-scrub #tag1 .w:first-child {
+  opacity: 1;
 }
 
 .hero-sub {

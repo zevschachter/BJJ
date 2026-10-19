@@ -26,10 +26,6 @@
   }
 
   const words = [...splitLine(tag1), ...splitLine(tag2)];
-  words.forEach((word, i) => {
-    const step = words.length > 1 ? 150 / (words.length - 1) : 0;
-    word.style.animationDelay = `${Math.round(i * step)}ms`;
-  });
 
   // Reduced motion: leave CSS defaults (everything visible). Do not add js-scrub.
   if (reduceMotion) {
@@ -54,6 +50,22 @@
     const trackHeight = track.offsetHeight;
     const denom = trackHeight - window.innerHeight;
     const p = denom > 0 ? clamp(-trackRect.top / denom, 0, 1) : 1;
+
+    // Word progress finishes about 60% of the way through the hero.
+    // At rest (p = 0) the first word is already fully lit, so the
+    // remaining words share the scroll and the headline is never blank.
+    const n = words.length;
+    const wordP = clamp(p / 0.6, 0, 1);
+    const span = n > 0 ? 1 / n : 1;
+    const lit = n > 1 ? span + wordP * (1 - span) : 1;
+
+    words.forEach((word, i) => {
+      const local = clamp((lit - i * span) / span, 0, 1);
+      word.style.opacity = (0.3 + 0.7 * local).toFixed(3);
+      word.style.color = local > 0 && local < 1
+        ? "color-mix(in srgb, var(--accent) 60%, var(--cream))"
+        : "";
+    });
 
     if (heroImg) {
       if (window.innerWidth < 768) {
