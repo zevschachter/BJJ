@@ -42,6 +42,24 @@
     return Math.min(max, Math.max(min, n));
   }
 
+  function mixPct(percent) {
+    const clamped = Math.min(100, Math.max(0, percent));
+    return (Math.round(clamped * 10) / 10).toFixed(1);
+  }
+
+  function wordColor(local, isLast) {
+    if (local <= 0) return "var(--muted-grey)";
+    if (isLast) {
+      if (local >= 0.5) return "var(--accent)";
+      return `color-mix(in srgb, var(--accent) ${mixPct(local * 2 * 100)}%, var(--muted-grey))`;
+    }
+    if (local >= 1) return "var(--cream)";
+    if (local <= 0.5) {
+      return `color-mix(in srgb, var(--accent) ${mixPct(local * 2 * 100)}%, var(--muted-grey))`;
+    }
+    return `color-mix(in srgb, var(--cream) ${mixPct((local - 0.5) * 2 * 100)}%, var(--accent))`;
+  }
+
   function updateScrub() {
     ticking = false;
     if (!track || !words.length) return;
@@ -52,19 +70,28 @@
     const p = denom > 0 ? clamp(-trackRect.top / denom, 0, 1) : 1;
 
     // Word progress finishes about 60% of the way through the hero.
-    // At rest (p = 0) the first word is already fully lit, so the
-    // remaining words share the scroll and the headline is never blank.
+    // Each word's window is 1.5x its slice and centered on that slice,
+    // so the next word starts warming before the previous one finishes.
+    // The first window is pinned to 0 and the last to 1 so the headline
+    // starts fully grey and "mat." reaches orange by the end.
     const n = words.length;
     const wordP = clamp(p / 0.6, 0, 1);
-    const span = n > 0 ? 1 / n : 1;
-    const lit = n > 1 ? span + wordP * (1 - span) : 1;
+    const slice = n > 0 ? 1 / n : 1;
+    const width = slice * 1.5;
 
     words.forEach((word, i) => {
-      const local = clamp((lit - i * span) / span, 0, 1);
-      word.style.opacity = (0.3 + 0.7 * local).toFixed(3);
-      word.style.color = local > 0 && local < 1
-        ? "color-mix(in srgb, var(--accent) 60%, var(--cream))"
-        : "";
+      let start = (i + 0.5) * slice - width / 2;
+      let end = start + width;
+      if (i === 0) {
+        start = 0;
+        end = width;
+      } else if (i === n - 1) {
+        end = 1;
+        start = 1 - width;
+      }
+      const local = clamp((wordP - start) / (end - start), 0, 1);
+      const isLast = i === n - 1;
+      word.style.color = wordColor(local, isLast);
     });
 
     if (heroImg) {

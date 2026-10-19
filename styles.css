@@ -5,6 +5,7 @@
   --accent-deep: #BA7517;
   --muted: #8A8880;
   --muted-dark: #9AA0A8;
+  --muted-grey: #6B6F78;
 }
 
 *,
@@ -225,15 +226,17 @@ p {
   display: inline-block;
   margin-right: 0.22em;
   opacity: 1;
+  color: var(--cream);
   transform: none;
 }
 
-.js-scrub .tagline .w {
-  opacity: 0.3;
+#tag2 .w:last-child {
+  color: var(--accent);
 }
 
-.js-scrub #tag1 .w:first-child {
-  opacity: 1;
+.js-scrub .tagline .w,
+.js-scrub #tag2 .w:last-child {
+  color: var(--muted-grey, #6B6F78);
 }
 
 .hero-sub {
