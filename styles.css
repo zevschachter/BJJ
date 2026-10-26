@@ -1,7 +1,7 @@
 :root {
   --ink: #101318;
   --cream: #F5F2EA;
-  --accent: #EF9F27;
+  --accent: #F55E03;
   --accent-deep: #BA7517;
   --muted: #8A8880;
   --muted-dark: #9AA0A8;
@@ -302,7 +302,7 @@ p {
 
 .ygl-row {
   display: grid;
-  grid-template-columns: clamp(200px, 18vw, 280px) minmax(0, 60ch);
+  grid-template-columns: clamp(220px, 20vw, 300px) minmax(0, 60ch);
   justify-content: start;
   column-gap: clamp(32px, 4vw, 64px);
   align-items: center;
@@ -350,11 +350,11 @@ p {
   padding: 0 2px 0 0;
 }
 @media (min-width: 768px) {
-  #ygl .ygl-ref { margin-left: calc(clamp(200px, 18vw, 280px) + clamp(32px, 4vw, 64px)); }
+  #ygl .ygl-ref { margin-left: calc(clamp(220px, 20vw, 300px) + clamp(32px, 4vw, 64px)); }
 }
 @keyframes ygl-glow {
-  0%, 100% { filter: drop-shadow(0 0 14px rgba(239, 108, 26, 0.20)); }
-  50%      { filter: drop-shadow(0 0 26px rgba(239, 108, 26, 0.42)); }
+  0%, 100% { filter: drop-shadow(0 0 14px rgba(245, 94, 3, 0.20)); }
+  50%      { filter: drop-shadow(0 0 26px rgba(245, 94, 3, 0.42)); }
 }
 
 .section-ygl .eyebrow { margin-top: 0; }
@@ -766,7 +766,7 @@ p {
     transition: none;
   }
 
-  .ygl-logo { animation: none; filter: drop-shadow(0 0 16px rgba(239, 108, 26, 0.28)); }
+  .ygl-logo { animation: none; filter: drop-shadow(0 0 16px rgba(245, 94, 3, 0.28)); }
 
   .term-track {
     animation: none;
