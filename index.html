@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BJJ &amp; Self-Defense for Yeshiva Bochurim in Jerusalem | Yeshiva Defense League</title>
-  <meta name="description" content="Brazilian Jiu Jitsu and self-defense for English-speaking yeshivot in Israel. Small classes of 3–6 bochurim, scheduled around seder. I bring the mats; you bring the space.">
+  <title>Yeshiva Grappling League | BJJ &amp; Self-Defense for Yeshiva Students in Jerusalem – Zev Schachter</title>
+  <meta name="description" content="The Yeshiva Grappling League, founded by Zev Schachter, teaches Brazilian Jiu Jitsu, grappling and self-defense to English-speaking yeshiva and gap-year students in Jerusalem. Classes run around seder. Free trial class.">
   <link rel="canonical" href="https://zev.life/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zev.life/">
-  <meta property="og:title" content="Zev Schachter BJJ — Brazilian Jiu Jitsu for ישיבות in Israel">
-  <meta property="og:description" content="Brazilian Jiu Jitsu and self-defense for English-speaking yeshivot in Israel. Small classes of 3–6 bochurim, scheduled around seder. I bring the mats; you bring the space.">
+  <meta property="og:title" content="Yeshiva Grappling League | BJJ &amp; Self-Defense for Yeshiva Students in Jerusalem – Zev Schachter">
+  <meta property="og:description" content="The Yeshiva Grappling League, founded by Zev Schachter, teaches Brazilian Jiu Jitsu, grappling and self-defense to English-speaking yeshiva and gap-year students in Jerusalem. Classes run around seder. Free trial class.">
+  <meta name="twitter:title" content="Yeshiva Grappling League | BJJ &amp; Self-Defense for Yeshiva Students in Jerusalem – Zev Schachter">
+  <meta name="twitter:description" content="The Yeshiva Grappling League, founded by Zev Schachter, teaches Brazilian Jiu Jitsu, grappling and self-defense to English-speaking yeshiva and gap-year students in Jerusalem. Classes run around seder. Free trial class.">
   <meta property="og:image" content="https://zev.life/img/og-image.jpg">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=3" />
-  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=3" />
-  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png?v=3" />
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=3" />
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=4" />
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png?v=4" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png?v=4" />
+  <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png?v=4" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png?v=4" />
   <meta name="theme-color" content="#101318" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,18 +30,15 @@
     "@graph": [
       {
         "@type": "SportsOrganization",
-        "name": "Yeshiva Defense League",
+        "@id": "https://zev.life/#org",
+        "name": "Yeshiva Grappling League",
+        "alternateName": "YGL",
         "url": "https://zev.life/",
-        "logo": "https://zev.life/img/ydl-logo.png",
+        "logo": "https://zev.life/img/ygl-logo.png",
         "sport": "Brazilian Jiu Jitsu",
         "description": "Brazilian Jiu Jitsu and self-defense programs for English-speaking yeshivot in Israel.",
         "areaServed": { "@type": "Country", "name": "Israel" },
-        "founder": {
-          "@type": "Person",
-          "name": "Zev Schachter",
-          "jobTitle": "BJJ Instructor",
-          "image": "https://zev.life/img/portrait.jpg"
-        },
+        "founder": { "@id": "https://zev.life/#zev" },
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer service",
@@ -45,6 +46,16 @@
           "telephone": "+972-53-534-6480",
           "availableLanguage": ["English", "Hebrew"]
         }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://zev.life/#zev",
+        "name": "Zev Schachter",
+        "alternateName": "Zevi Schachter",
+        "jobTitle": "Founder & Head Instructor",
+        "worksFor": { "@id": "https://zev.life/#org" },
+        "url": "https://zev.life/",
+        "image": "https://zev.life/img/portrait.jpg"
       }
     ]
   }
@@ -67,12 +78,12 @@
         </picture>
         <div class="hero-scrim" aria-hidden="true"></div>
         <div class="hero-content">
-          <p class="eyebrow">Zev Schachter · Brazilian Jiu Jitsu</p>
+          <p class="eyebrow">Zev Schachter · Founder, Yeshiva Grappling League</p>
           <h1 class="tagline">
             <span class="tagline-line" id="tag1" dir="ltr">Different ישיבות</span>
             <span class="tagline-line" id="tag2" dir="ltr">Same mat.</span>
           </h1>
-          <p class="hero-sub">Self-Defense programs for English-speaking <bdi lang="he">ישיבות</bdi> in Israel.</p>
+          <p class="hero-sub">Grappling and self-defense for English-speaking <bdi lang="he">ישיבות</bdi> in Israel.</p>
           <a class="btn btn-primary hero-cta" id="heroCta" href="#contact">Set up a trial class</a>
         </div>
         <div class="scroll-hint" id="scrollHint" aria-hidden="true">
@@ -82,24 +93,24 @@
       </div>
     </section>
 
-    <!-- Yeshiva Defense League -->
-    <section class="section section-dark section-ydl" id="ydl">
-      <div class="wrap ydl-body reveal">
-        <p class="eyebrow">Yeshiva Defense League</p>
+    <!-- Yeshiva Grappling League -->
+    <section class="section section-dark section-ygl" id="ygl">
+      <div class="wrap ygl-body reveal">
+        <p class="eyebrow">Yeshiva Grappling League</p>
         <h2>An outlet, not an interruption.</h2>
-        <div class="ydl-row">
-          <div class="ydl-logo">
+        <div class="ygl-row">
+          <div class="ygl-logo">
             <picture>
-              <source srcset="img/ydl-logo.webp?v=3" type="image/webp" />
-              <img src="img/ydl-logo.png?v=3" width="1000" height="778" alt="Yeshiva Defense League logo, BJJ and self-defense for yeshiva bochurim" />
+              <source srcset="img/ygl-logo.webp?v=4" type="image/webp" />
+              <img src="img/ygl-logo.png?v=4" width="1000" height="813" alt="Yeshiva Grappling League logo – BJJ and grappling for yeshiva students" />
             </picture>
           </div>
-          <div class="ydl-copy">
+          <div class="ygl-copy">
             <p>Bochurim train at their own <bdi lang="he">ישיבה</bdi> during the week and come together across <bdi lang="he">ישיבות</bdi> for open mats. It's a healthy physical and mental outlet, and studies show it leaves them calmer.<sup><a href="#ref-1" id="ref-1-back" class="footnote-ref">1</a></sup></p>
             <p>Always scheduled around seder, never through it.</p>
           </div>
         </div>
-        <p class="ydl-ref" id="ref-1"><sup>1</sup> Harwood, Lavidor &amp; Rassovsky, <em>Aggression and Violent Behavior</em> (Bar-Ilan University, 2017). <a href="https://cris.biu.ac.il/en/publications/reducing-aggression-with-martial-arts-a-meta-analysis-of-child-an/" target="_blank" rel="noopener">View study</a></p>
+        <p class="ygl-ref" id="ref-1"><sup>1</sup> Harwood, Lavidor &amp; Rassovsky, <em>Aggression and Violent Behavior</em> (Bar-Ilan University, 2017). <a href="https://cris.biu.ac.il/en/publications/reducing-aggression-with-martial-arts-a-meta-analysis-of-child-an/" target="_blank" rel="noopener">View study</a></p>
       </div>
     </section>
 
@@ -176,6 +187,9 @@
           <li lang="he">ג'יו ג'יטסו</li>
           <li>Middos on the Mat</li>
           <li>Grappling</li>
+          <li>Yeshiva Grappling League</li>
+          <li>Jiu Jitsu for yeshiva students</li>
+          <li>Grappling for yeshiva bochurim</li>
           <li>Achdus</li>
           <li>Eretz Yisroel</li>
           <li>Healthy Outlet</li>
@@ -195,6 +209,9 @@
           <li lang="he">ג'יו ג'יטסו</li>
           <li>Middos on the Mat</li>
           <li>Grappling</li>
+          <li>Yeshiva Grappling League</li>
+          <li>Jiu Jitsu for yeshiva students</li>
+          <li>Grappling for yeshiva bochurim</li>
           <li>Achdus</li>
           <li>Eretz Yisroel</li>
           <li>Healthy Outlet</li>
@@ -246,7 +263,7 @@
         <h2 class="contact-title">Let's set up a trial class.</h2>
         <p class="contact-sub">One class. Your bochurim will tell you the rest.</p>
         <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/972535346480?text=Hi%20Zev%2C%20I%20came%20across%20the%20Yeshiva%20Defense%20League%20and%20I%27d%20like%20to%20hear%20about%20bringing%20it%20to%20our%20yeshiva.">WhatsApp me</a>
+          <a class="btn btn-primary" href="https://wa.me/972535346480?text=Hi%20Zev%2C%20I%20came%20across%20the%20Yeshiva%20Grappling%20League%20and%20I%27d%20like%20to%20hear%20about%20bringing%20it%20to%20our%20yeshiva.">WhatsApp me</a>
           <a class="btn btn-outline" href="mailto:zevschachter@gmail.com">Email</a>
         </div>
       </div>
