@@ -396,6 +396,10 @@ p {
     outline: 2px solid #fff;
     outline-offset: 3px;
   }
+
+  body:not(.js-scrub) .scroll-cue {
+    display: none;
+  }
 }
 
 @keyframes cue-pulse {
@@ -881,8 +885,7 @@ p {
     pointer-events: auto !important;
   }
 
-  .scroll-hint,
-  .scroll-cue {
+  .scroll-hint {
     display: none;
   }
 

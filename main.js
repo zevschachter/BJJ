@@ -30,17 +30,16 @@
 
   if (scrollCue && track) {
     scrollCue.addEventListener("click", () => {
-      const denom = track.offsetHeight - window.innerHeight;
-      const next = document.getElementById("ygl");
-      const top = reduceMotion || denom <= 0
-        ? (next ? next.offsetTop : window.innerHeight)
-        : track.offsetTop + denom * 0.66;
-      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+      window.scrollTo({
+        top: track.offsetTop + track.offsetHeight - window.innerHeight,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
     });
   }
 
   // Reduced motion: leave CSS defaults (everything visible). Do not add js-scrub.
   if (reduceMotion) {
+    if (scrollCue) scrollCue.hidden = true;
     setupReveals(false);
     setupStickyCta();
     return;
@@ -118,7 +117,7 @@
 
     if (heroCta) heroCta.classList.toggle("on", p > 0.62);
     if (scrollHint) scrollHint.classList.toggle("off", p > 0.05);
-    if (scrollCue) scrollCue.classList.toggle("is-done", p >= 0.6);
+    if (scrollCue) scrollCue.classList.toggle("is-done", p >= 0.98);
   }
 
   function onScrollOrResize() {
