@@ -5,6 +5,7 @@
   const tag2 = document.getElementById("tag2");
   const heroCta = document.getElementById("heroCta");
   const scrollHint = document.getElementById("scrollHint");
+  const scrollCue = document.querySelector(".scroll-cue");
   const track = document.querySelector(".hero-track");
   const heroImg = document.querySelector(".hero-img");
   const stickyCta = document.getElementById("stickyCta");
@@ -26,6 +27,17 @@
   }
 
   const words = [...splitLine(tag1), ...splitLine(tag2)];
+
+  if (scrollCue && track) {
+    scrollCue.addEventListener("click", () => {
+      const denom = track.offsetHeight - window.innerHeight;
+      const next = document.getElementById("ygl");
+      const top = reduceMotion || denom <= 0
+        ? (next ? next.offsetTop : window.innerHeight)
+        : track.offsetTop + denom * 0.66;
+      window.scrollTo({ top, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
 
   // Reduced motion: leave CSS defaults (everything visible). Do not add js-scrub.
   if (reduceMotion) {
@@ -106,6 +118,7 @@
 
     if (heroCta) heroCta.classList.toggle("on", p > 0.62);
     if (scrollHint) scrollHint.classList.toggle("off", p > 0.05);
+    if (scrollCue) scrollCue.classList.toggle("is-done", p >= 0.6);
   }
 
   function onScrollOrResize() {

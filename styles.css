@@ -60,6 +60,10 @@ a:focus-visible,
   color: var(--accent-deep);
 }
 
+.byline-role {
+  display: inline;
+}
+
 h1,
 h2,
 h3 {
@@ -327,6 +331,76 @@ p {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--cream) 70%, transparent);
+}
+
+.scroll-cue {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .byline-role {
+    display: block;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  .scroll-cue {
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    position: absolute;
+    z-index: 5;
+    right: calc(12px + env(safe-area-inset-right, 0px));
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    appearance: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .scroll-cue.is-done {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .scroll-cue-word {
+    writing-mode: vertical-rl;
+    font: 700 10px/1 var(--font-body, Inter, sans-serif);
+    letter-spacing: 0.3em;
+    color: var(--accent);
+  }
+
+  .scroll-cue-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--accent);
+    color: #111;
+    animation: cue-pulse 1.8s ease-out infinite;
+  }
+
+  .scroll-cue:focus-visible {
+    outline: none;
+  }
+
+  .scroll-cue:focus-visible .scroll-cue-btn {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+}
+
+@keyframes cue-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  100% { box-shadow: 0 0 0 16px color-mix(in srgb, var(--accent) 0%, transparent); }
 }
 
 /* —— YGL —— */
@@ -807,8 +881,13 @@ p {
     pointer-events: auto !important;
   }
 
-  .scroll-hint {
+  .scroll-hint,
+  .scroll-cue {
     display: none;
+  }
+
+  .scroll-cue-btn {
+    animation: none;
   }
 
   .sticky-cta {
