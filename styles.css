@@ -300,105 +300,81 @@ p {
   pointer-events: auto;
 }
 
-.scroll-hint {
-  position: absolute;
-  left: 50%;
-  bottom: 1.5rem;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.45rem;
-  transform: translateX(-50%);
-  opacity: 1;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-
-.scroll-hint.off {
-  opacity: 0;
-}
-
-.scroll-hint-line {
-  display: block;
-  width: 1px;
-  height: 36px;
-  background: color-mix(in srgb, var(--cream) 55%, transparent);
-}
-
-.scroll-hint-label {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: color-mix(in srgb, var(--cream) 70%, transparent);
-}
-
-.scroll-cue {
-  display: none;
-}
-
 @media (max-width: 767px) {
   .byline-role {
     display: block;
   }
+}
 
-  .scroll-hint {
-    display: none;
-  }
+.scroll-cue {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  position: absolute;
+  z-index: 5;
+  right: calc(12px + env(safe-area-inset-right, 0px));
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  appearance: none;
+  transition: opacity 0.3s ease;
+}
 
+.scroll-cue.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-cue-word {
+  writing-mode: vertical-rl;
+  font: 700 10px/1 var(--font-body, Inter, sans-serif);
+  letter-spacing: 0.3em;
+  color: var(--accent);
+}
+
+.scroll-cue-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--accent);
+  color: #111;
+  animation: cue-pulse 1.8s ease-out infinite;
+}
+
+.scroll-cue:focus-visible {
+  outline: none;
+}
+
+.scroll-cue:focus-visible .scroll-cue-btn {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+body:not(.js-scrub) .scroll-cue {
+  display: none;
+}
+
+@media (min-width: 768px) {
   .scroll-cue {
-    display: grid;
-    justify-items: center;
-    gap: 8px;
-    position: absolute;
-    z-index: 5;
-    right: calc(12px + env(safe-area-inset-right, 0px));
-    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
-    background: none;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    cursor: pointer;
-    color: inherit;
-    font: inherit;
-    appearance: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .scroll-cue.is-done {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .scroll-cue-word {
-    writing-mode: vertical-rl;
-    font: 700 10px/1 var(--font-body, Inter, sans-serif);
-    letter-spacing: 0.3em;
-    color: var(--accent);
+    right: calc(40px + env(safe-area-inset-right, 0px));
+    bottom: 40px;
   }
 
   .scroll-cue-btn {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    background: var(--accent);
-    color: #111;
-    animation: cue-pulse 1.8s ease-out infinite;
+    width: 52px;
+    height: 52px;
   }
 
-  .scroll-cue:focus-visible {
-    outline: none;
-  }
-
-  .scroll-cue:focus-visible .scroll-cue-btn {
-    outline: 2px solid #fff;
-    outline-offset: 3px;
-  }
-
-  body:not(.js-scrub) .scroll-cue {
-    display: none;
+  .scroll-cue-btn svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -883,10 +859,6 @@ p {
     transition: none !important;
     animation: none !important;
     pointer-events: auto !important;
-  }
-
-  .scroll-hint {
-    display: none;
   }
 
   .scroll-cue-btn {

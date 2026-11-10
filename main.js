@@ -4,7 +4,6 @@
   const tag1 = document.getElementById("tag1");
   const tag2 = document.getElementById("tag2");
   const heroCta = document.getElementById("heroCta");
-  const scrollHint = document.getElementById("scrollHint");
   const scrollCue = document.querySelector(".scroll-cue");
   const track = document.querySelector(".hero-track");
   const heroImg = document.querySelector(".hero-img");
@@ -116,7 +115,6 @@
     }
 
     if (heroCta) heroCta.classList.toggle("on", p > 0.62);
-    if (scrollHint) scrollHint.classList.toggle("off", p > 0.05);
     if (scrollCue) scrollCue.classList.toggle("is-done", p >= 0.98);
   }
 
