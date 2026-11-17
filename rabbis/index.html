@@ -13,17 +13,17 @@
   <meta name="twitter:title" content="Yeshiva Grappling League (YGL) | BJJ &amp; Self-Defense Program for Yeshivot – For Rabbis">
   <meta name="twitter:description" content="The Yeshiva Grappling League, founded by Zev Schachter, teaches Brazilian Jiu Jitsu, grappling and self-defense to English-speaking yeshiva and gap-year students in Jerusalem. Classes run around seder. Free trial class.">
   <meta property="og:image" content="https://zev.life/img/og-image.jpg?v=4">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=4" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=4" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png?v=4" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/img/icon-512.png?v=4" />
-  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png?v=4" />
-  <meta name="theme-color" content="#101318" />
+  <link rel="icon" href="/favicon.ico?v=5" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=5">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png?v=5">
+  <link rel="icon" type="image/png" sizes="192x192" href="/img/icon-192.png?v=5">
+  <link rel="icon" type="image/png" sizes="512x512" href="/img/icon-512.png?v=5">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png?v=5">
+  <meta name="theme-color" content="#101318">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Heebo:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=9">
+  <link rel="stylesheet" href="/styles.css?v=10">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,18 +55,19 @@
         <div class="hero-scrim" aria-hidden="true"></div>
         <div class="hero-content">
           <nav class="audience" aria-label="Audience">
-            <a href="/">For the Boys</a>
-            <a href="/rabbis/" aria-current="page">For Rabbis</a>
+            <a href="/" data-track="audience-boys">For the Boys</a>
+            <a href="/rabbis/" aria-current="page" data-track="audience-rabbis">For Rabbis</a>
           </nav>
           <p class="eyebrow hero-byline">Zev Schachter, M.A. · <span class="byline-role">Founder, Yeshiva Grappling League</span></p>
           <h1 class="tagline">
+            <span class="sr-only">Yeshiva Grappling League (YGL): a Jiu Jitsu and self-defense program for yeshivot in Jerusalem.</span>
             <span class="tagline-line" id="tag1" dir="ltr">Different ישיבות</span>
             <span class="tagline-line" id="tag2" dir="ltr">Same mat.</span>
           </h1>
           <p class="hero-sub">Grappling and self-defense for English-speaking <bdi lang="he">ישיבות</bdi> in Israel.</p>
-          <a class="btn btn-primary hero-cta" id="heroCta" href="#contact">Set up a trial class</a>
+          <a class="btn btn-primary hero-cta" id="heroCta" href="#contact" data-track="hero">Set up a trial class</a>
         </div>
-        <button class="scroll-cue" type="button" aria-label="Scroll to continue">
+        <button class="scroll-cue" type="button" aria-label="Scroll to continue" data-track="scroll-cue">
           <span class="scroll-cue-word" aria-hidden="true">SCROLL</span>
           <span class="scroll-cue-btn" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v10M2.5 7.5 7 12l4.5-4.5"/></svg>
@@ -249,8 +250,8 @@
         <h2 class="contact-title">Let's set up a trial class.</h2>
         <p class="contact-sub">One class. Your bochurim will tell you the rest.</p>
         <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/972535346480?text=Hi%20Zev%2C%20I%20came%20across%20the%20Yeshiva%20Grappling%20League%20and%20I%27d%20like%20to%20hear%20about%20bringing%20it%20to%20our%20yeshiva.">WhatsApp me</a>
-          <a class="btn btn-outline" href="mailto:zevschachter@gmail.com">Email</a>
+          <a class="btn btn-primary" data-track="whatsapp" href="https://wa.me/972535346480?text=Hi%20Zev%2C%20I%20came%20across%20the%20Yeshiva%20Grappling%20League%20and%20I%27d%20like%20to%20hear%20about%20bringing%20it%20to%20our%20yeshiva.">WhatsApp me</a>
+          <a class="btn btn-outline" data-track="email" href="mailto:zevschachter@gmail.com">Email</a>
         </div>
         <p class="contact-switch">Are you a bochur? → <a href="/">For the Boys</a></p>
       </div>
@@ -259,10 +260,12 @@
 
   <footer class="site-footer" id="footer">
     <p>Zev Schachter · Jerusalem · Still Shteigin' · <a href="/faq">Questions</a> · © 2026</p>
+    <p class="footer-places">Serving yeshivot in Jerusalem: Har Nof · Bayit Vegan · Ramot · Old City · Givat Shaul · Ramat Shlomo · Kiryat Moshe · Mevaseret</p>
   </footer>
 
   <a class="sticky-cta" id="stickyCta" href="#contact" hidden>Set up a trial class</a>
 
-  <script src="/main.js?v=9" defer></script>
+  <script src="/main.js?v=10" defer></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_BEACON_TOKEN"}'></script>
 </body>
 </html>
