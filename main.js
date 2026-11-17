@@ -12,8 +12,10 @@
   const footer = document.getElementById("footer");
 
   function splitLine(el) {
-    if (!el) return [];
-    const parts = el.textContent.trim().split(/\s+/);
+    if (!el || el.classList.contains("sr-only")) return [];
+    const source = el.cloneNode(true);
+    source.querySelectorAll(".sr-only").forEach((node) => node.remove());
+    const parts = source.textContent.trim().split(/\s+/);
     el.textContent = "";
     return parts.map((part) => {
       const span = document.createElement("span");

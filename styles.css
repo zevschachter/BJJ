@@ -64,6 +64,18 @@ a:focus-visible,
   display: inline;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 h1,
 h2,
 h3 {
@@ -659,6 +671,25 @@ body:not(.js-scrub) .scroll-cue {
   margin: 0 0 1.15rem;
 }
 
+.faq-extra {
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+.faq-extra h2 {
+  font-family: Archivo, Heebo, system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 1.35;
+  margin: 0;
+  padding: 1.05rem 0 0.4rem;
+}
+
+.faq-extra p {
+  max-width: 60ch;
+  margin: 0 0 1.15rem;
+}
+
 /* —— Gyms —— */
 .gyms {
   list-style: none;
@@ -766,6 +797,11 @@ body:not(.js-scrub) .scroll-cue {
   font-size: 13px;
   line-height: 1.6;
   max-width: 62ch;
+}
+
+.site-footer .footer-places {
+  margin-top: 0.55rem;
+  font-size: 12px;
 }
 
 /* —— Reveals (progressive enhancement) —— */

@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Heebo:wght@400;500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css?v=9">
+  <link rel="stylesheet" href="/styles.css?v=10">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,7 +37,24 @@
         "logo": "https://zev.life/img/ygl-logo.png",
         "sport": "Brazilian Jiu Jitsu",
         "description": "Brazilian Jiu Jitsu and self-defense programs for English-speaking yeshivot in Israel.",
-        "areaServed": { "@type": "Country", "name": "Israel" },
+        "areaServed": [
+          { "@type": "City", "name": "Jerusalem" },
+          { "@type": "Place", "name": "Har Nof" },
+          { "@type": "Place", "name": "Bayit Vegan" },
+          { "@type": "Place", "name": "Ramot" },
+          { "@type": "Place", "name": "Old City" },
+          { "@type": "Place", "name": "Givat Shaul" },
+          { "@type": "Place", "name": "Ramat Shlomo" },
+          { "@type": "Place", "name": "Kiryat Moshe" },
+          { "@type": "Place", "name": "Mevaseret Zion" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jerusalem",
+          "addressCountry": "IL"
+        },
+        "knowsLanguage": ["en", "he"],
+        "sameAs": [],
         "founder": { "@id": "https://zev.life/#zev" },
         "contactPoint": {
           "@type": "ContactPoint",
@@ -57,6 +74,26 @@
         "worksFor": { "@id": "https://zev.life/#org" },
         "url": "https://zev.life/",
         "image": "https://zev.life/img/portrait.jpg"
+      },
+      {
+        "@type": "Service",
+        "name": "Brazilian Jiu Jitsu and self-defense classes for yeshivot",
+        "serviceType": "Martial arts instruction",
+        "provider": { "@id": "https://zev.life/#org" },
+        "areaServed": "Jerusalem",
+        "audience": { "@type": "Audience", "audienceType": "Yeshiva students" },
+        "offers": {
+          "@type": "Offer",
+          "name": "Free trial class",
+          "price": "0",
+          "priceCurrency": "ILS"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "name": "Yeshiva Grappling League",
+        "alternateName": "YGL",
+        "url": "https://zev.life/"
       }
     ]
   }
@@ -80,18 +117,19 @@
         <div class="hero-scrim" aria-hidden="true"></div>
         <div class="hero-content">
           <nav class="audience" aria-label="Audience">
-            <a href="/" aria-current="page">For the Boys</a>
-            <a href="/rabbis/">For Rabbis</a>
+            <a href="/" aria-current="page" data-track="audience-boys">For the Boys</a>
+            <a href="/rabbis/" data-track="audience-rabbis">For Rabbis</a>
           </nav>
           <p class="eyebrow hero-byline">Zev Schachter, M.A. · <span class="byline-role">Founder, Yeshiva Grappling League</span></p>
           <h1 class="tagline">
+            <span class="sr-only">Yeshiva Grappling League (YGL): Jiu Jitsu and self-defense for yeshiva bochurim in Jerusalem.</span>
             <span class="tagline-line" id="tag1" dir="ltr">Different ישיבות</span>
             <span class="tagline-line" id="tag2" dir="ltr">Same mat.</span>
           </h1>
           <p class="hero-sub">Jiu Jitsu and self-defense for bochurim in Israel.</p>
-          <a class="btn btn-primary hero-cta" id="heroCta" href="#contact">Get on the mat</a>
+          <a class="btn btn-primary hero-cta" id="heroCta" href="#contact" data-track="hero">Get on the mat</a>
         </div>
-        <button class="scroll-cue" type="button" aria-label="Scroll to continue">
+        <button class="scroll-cue" type="button" aria-label="Scroll to continue" data-track="scroll-cue">
           <span class="scroll-cue-word" aria-hidden="true">SCROLL</span>
           <span class="scroll-cue-btn" aria-hidden="true">
             <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v10M2.5 7.5 7 12l4.5-4.5"/></svg>
@@ -269,8 +307,8 @@
         <h2 class="contact-title">Want the YGL in your yeshiva?</h2>
         <p class="contact-sub">Message me and bring a chavrusa. Get a few guys together who want in, and I'll reach out to your hanhala to set up a trial class.</p>
         <div class="contact-actions">
-          <a class="btn btn-primary" href="https://wa.me/972535346480?text=Hi%20Zev%2C%20I%27m%20a%20bochur%20at%20%5Byeshiva%5D%20and%20I%20want%20to%20start%20training%20with%20the%20Yeshiva%20Grappling%20League.">WhatsApp me</a>
-          <a class="btn btn-outline" href="mailto:zevschachter@gmail.com">Email</a>
+          <a class="btn btn-primary" data-track="whatsapp" href="https://wa.me/972535346480?text=Hi%20Zev%2C%20I%27m%20a%20bochur%20at%20%5Byeshiva%5D%20and%20I%20want%20to%20start%20training%20with%20the%20Yeshiva%20Grappling%20League.">WhatsApp me</a>
+          <a class="btn btn-outline" data-track="email" href="mailto:zevschachter@gmail.com">Email</a>
         </div>
         <p class="contact-switch">Are you a Rebbe or Menahel? → <a href="/rabbis/">For Rabbis</a></p>
       </div>
@@ -279,10 +317,12 @@
 
   <footer class="site-footer" id="footer">
     <p>Zev Schachter · Jerusalem · Still Shteigin' · <a href="/faq">Questions</a> · © 2026</p>
+    <p class="footer-places">Serving yeshivot in Jerusalem: Har Nof · Bayit Vegan · Ramot · Old City · Givat Shaul · Ramat Shlomo · Kiryat Moshe · Mevaseret</p>
   </footer>
 
   <a class="sticky-cta" id="stickyCta" href="#contact" hidden>Get on the mat</a>
 
-  <script src="/main.js?v=9" defer></script>
+  <script src="/main.js?v=10" defer></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "CF_BEACON_TOKEN"}'></script>
 </body>
 </html>
